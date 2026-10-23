@@ -1,0 +1,14 @@
+services:
+  blaise:
+    build: .
+    environment:
+      DISPLAY: ${DISPLAY:-host.docker.internal:0.0}
+      BLAISE_DATA_DIR: /data
+      QT_X11_NO_MITSHM: "1"
+    volumes:
+      - blaise-data:/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  blaise-data:
